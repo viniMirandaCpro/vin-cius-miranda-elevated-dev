@@ -127,7 +127,7 @@ const translations = {
   },
 } as const;
 
-type Translations = typeof translations.pt;
+type Translations = (typeof translations)[Lang];
 
 const I18nContext = createContext<{ lang: Lang; t: Translations; toggle: () => void }>({
   lang: "pt",
