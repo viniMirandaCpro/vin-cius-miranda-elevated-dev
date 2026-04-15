@@ -4,7 +4,7 @@ import { useI18n } from "@/lib/i18n";
 export default function ExperienceSection() {
   const { t } = useI18n();
 
-  const entries = [t.experience.freelance, t.experience.ifrn];
+  const entries = [t.experience.saasFounder, t.experience.freelance, t.experience.studies, t.experience.ifrn];
 
   return (
     <section id="experience" className="section-padding">

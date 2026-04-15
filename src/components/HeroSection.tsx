@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 import { ChevronDown } from "lucide-react";
+import fotoPortfolio from "@/assets/foto-portfolio.jpeg";
 
 function TypingText({ texts }: { texts: string[] }) {
   const [index, setIndex] = useState(0);
@@ -65,52 +66,63 @@ export default function HeroSection() {
       <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full opacity-15 blur-[120px]"
         style={{ background: "var(--glow-secondary)", animation: "float 8s ease-in-out infinite 2s" }} />
 
-      <div className="relative z-10 flex flex-col items-center text-center">
-        {/* Profile photo placeholder */}
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-8 h-32 w-32 rounded-full glow-border flex items-center justify-center"
-          style={{ background: "linear-gradient(135deg, var(--glow), var(--glow-secondary))", padding: "3px" }}
-        >
-          <div className="flex h-full w-full items-center justify-center rounded-full bg-background text-muted-foreground text-xs font-mono">
-            foto
+      <div className="relative z-10 flex flex-col items-center w-full max-w-5xl">
+        {/* Photo + text row */}
+        <div className="flex flex-col md:flex-row items-center md:items-center gap-10 w-full">
+          {/* Profile photo */}
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="shrink-0 h-64 w-64 rounded-2xl glow-border p-[3px]"
+            style={{ background: "linear-gradient(135deg, var(--glow), var(--glow-secondary))" }}
+          >
+            <div className="h-full w-full rounded-2xl overflow-hidden">
+              <img
+                src={fotoPortfolio}
+                alt="Vinícius Miranda"
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
+          </motion.div>
+
+          {/* Text info */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-5xl font-bold tracking-tight md:text-7xl font-display"
+            >
+              <span className="gradient-text">Vinícius Miranda</span>
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="mt-4 h-10 text-xl font-medium md:text-2xl font-display"
+            >
+              <TypingText texts={t.hero.roles as unknown as string[]} />
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="mt-6 max-w-xl text-muted-foreground leading-relaxed"
+            >
+              {t.hero.bio}
+            </motion.p>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-5xl font-bold tracking-tight md:text-7xl font-display"
-        >
-          <span className="gradient-text">Vinícius Miranda</span>
-        </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-4 h-10 text-xl font-medium md:text-2xl font-display"
-        >
-          <TypingText texts={t.hero.roles as unknown as string[]} />
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-6 max-w-xl text-muted-foreground leading-relaxed"
-        >
-          {t.hero.bio}
-        </motion.p>
-
+        {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <button onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} className="btn-glow">
             {t.hero.cta1}

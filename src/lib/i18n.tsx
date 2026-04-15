@@ -37,15 +37,38 @@ const translations = {
     },
     experience: {
       title: "Experiência",
-      freelance: {
-        role: "Full Stack Developer & SaaS Founder",
-        company: "Freelance | Self-Employed",
+      saasFounder: {
+        role: "SaaS Founder & Full Stack Developer",
+        company: "Self-Employed",
         period: "2023 – Presente",
         highlights: [
-          "Fundador de 2 SaaS publicados (AlôChegou e Vitool Finance)",
-          "Freelancer internacional — reconstrução de SaaS multi-tenant em Laravel",
-          "Automações com n8n e integrações com WhatsApp API",
-          "Uso intenso de IA (Claude, Gemini) no fluxo de desenvolvimento",
+          "Fundei e publiquei 2 SaaS próprios: AlôChegou e Vitool Finance",
+          "Conduzi todo o ciclo de produto — ideação, desenvolvimento, infraestrutura e lançamento",
+          "Uso IA (Claude, Gemini) como parte do meu fluxo de desenvolvimento",
+        ],
+      },
+      freelance: {
+        role: "Freelancer Full Stack Internacional",
+        company: "Freelance | Remoto",
+        period: "Mar – Out 2025",
+        highlights: [
+          "Reconstruí do zero uma plataforma SaaS multi-tenant de gestão de equipamentos — migrei de Yii2 para Laravel + Vue.js de forma independente",
+          "Arquitetei o sistema multi-tenant com isolamento completo de dados entre tenants",
+          "Implementei RBAC no backend (policies e gates do Laravel) e no frontend (renderização condicional e guards de rota com Vue.js)",
+          "Construí uma SPA fluida com Vue.js + Inertia.js, sem necessidade de uma camada de API separada",
+          "Conduzi a migração completa do banco de dados (MySQL/PostgreSQL) preservando a integridade dos dados",
+          "Containerizei a aplicação com Docker, garantindo consistência entre ambientes",
+        ],
+      },
+      studies: {
+        role: "Estudos & Projetos Paralelos",
+        company: "Desenvolvimento Pessoal",
+        period: "2021 – Presente",
+        highlights: [
+          "Iniciei estudos em Python — automações, scripts e exploração de dados",
+          "Aprendi Flutter e Dart para desenvolvimento mobile multiplataforma",
+          "Desenvolvi projetos mobile side-projects com Flutter",
+          "Base sólida que culminou no stack atual de desenvolvimento",
         ],
       },
       ifrn: {
@@ -98,15 +121,38 @@ const translations = {
     },
     experience: {
       title: "Experience",
-      freelance: {
-        role: "Full Stack Developer & SaaS Founder",
-        company: "Freelance | Self-Employed",
+      saasFounder: {
+        role: "SaaS Founder & Full Stack Developer",
+        company: "Self-Employed",
         period: "2023 – Present",
         highlights: [
-          "Founder of 2 published SaaS (AlôChegou and Vitool Finance)",
-          "International freelancer — rebuild of multi-tenant SaaS in Laravel",
-          "Automations with n8n and WhatsApp API integrations",
-          "Heavy use of AI (Claude, Gemini) in development workflow",
+          "Founded and launched 2 own SaaS products: AlôChegou and Vitool Finance",
+          "Handled the full product cycle — ideation, development, infrastructure, and launch",
+          "Use AI (Claude, Gemini) as part of my everyday development workflow",
+        ],
+      },
+      freelance: {
+        role: "International Full Stack Freelancer",
+        company: "Freelance | Remote",
+        period: "Mar – Oct 2025",
+        highlights: [
+          "Rebuilt from scratch a multi-tenant equipment management SaaS — migrated from Yii2 to Laravel + Vue.js independently",
+          "Architected the multi-tenant system with full data isolation between tenants",
+          "Implemented RBAC on backend (Laravel policies/gates) and frontend (Vue.js conditional rendering and route guards)",
+          "Built a fluid SPA with Vue.js + Inertia.js, with no need for a separate API layer",
+          "Led the full database migration (MySQL/PostgreSQL) preserving data integrity",
+          "Containerized the app with Docker for consistent dev/prod environments",
+        ],
+      },
+      studies: {
+        role: "Studies & Side Projects",
+        company: "Self-Directed Learning",
+        period: "2021 – Present",
+        highlights: [
+          "Started Python studies — automations, scripts, and data exploration",
+          "Learned Flutter and Dart for cross-platform mobile development",
+          "Built mobile side-projects with Flutter",
+          "Strong foundation that led to the current development stack",
         ],
       },
       ifrn: {

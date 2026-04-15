@@ -1,13 +1,79 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
+import {
+  SiFlutter,
+  SiDart,
+  SiReact,
+  SiVuedotjs,
+  SiLaravel,
+  SiPhp,
+  SiMysql,
+  SiSupabase,
+  SiPostgresql,
+  SiFirebase,
+  SiDocker,
+  SiGit,
+  SiGooglegemini,
+} from "react-icons/si";
+import { TbBrandFramerMotion } from "react-icons/tb";
+import { FaRobot } from "react-icons/fa";
 
-const groups = [
-  { label: "Mobile", items: ["Flutter"] },
-  { label: "Frontend", items: ["React", "Vue.js"] },
-  { label: "Backend", items: ["Laravel (PHP)"] },
-  { label: "Database", items: ["MySQL", "Supabase", "PostgreSQL"] },
-  { label: "Tools", items: ["Docker", "Inertia.js", "Git", "n8n"] },
-  { label: "AI / Workflow", items: ["Claude", "Gemini", "Lovable"] },
+type TechItem = {
+  name: string;
+  icon: React.ReactNode;
+};
+
+type Group = {
+  label: string;
+  items: TechItem[];
+};
+
+const groups: Group[] = [
+  {
+    label: "Mobile",
+    items: [
+      { name: "Flutter", icon: <SiFlutter className="text-[#54C5F8]" /> },
+      { name: "Dart", icon: <SiDart className="text-[#0175C2]" /> },
+    ],
+  },
+  {
+    label: "Frontend",
+    items: [
+      { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
+      { name: "Vue.js", icon: <SiVuedotjs className="text-[#42B883]" /> },
+    ],
+  },
+  {
+    label: "Backend",
+    items: [
+      { name: "Laravel", icon: <SiLaravel className="text-[#FF2D20]" /> },
+      { name: "PHP", icon: <SiPhp className="text-[#777BB4]" /> },
+    ],
+  },
+  {
+    label: "Database",
+    items: [
+      { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
+      { name: "Supabase", icon: <SiSupabase className="text-[#3ECF8E]" /> },
+      { name: "PostgreSQL", icon: <SiPostgresql className="text-[#336791]" /> },
+      { name: "Firebase", icon: <SiFirebase className="text-[#FFCA28]" /> },
+    ],
+  },
+  {
+    label: "Tools",
+    items: [
+      { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
+      { name: "Inertia.js", icon: <TbBrandFramerMotion className="text-[#9553E9]" /> },
+      { name: "Git", icon: <SiGit className="text-[#F05032]" /> },
+    ],
+  },
+  {
+    label: "AI / Workflow",
+    items: [
+      { name: "Claude", icon: <FaRobot className="text-[#D97757]" /> },
+      { name: "Gemini", icon: <SiGooglegemini className="text-[#4285F4]" /> },
+    ],
+  },
 ];
 
 export default function TechStackSection() {
@@ -47,14 +113,15 @@ export default function TechStackSection() {
               <div className="flex flex-wrap gap-2">
                 {g.items.map((item, ii) => (
                   <motion.span
-                    key={item}
+                    key={item.name}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: gi * 0.1 + ii * 0.05 + 0.2, duration: 0.4 }}
-                    className="inline-block rounded-lg border border-glass-border bg-secondary px-3 py-1.5 text-sm font-medium transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_oklch(0.65_0.28_290_/_25%)] cursor-default"
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-glass-border bg-secondary px-3 py-1.5 text-sm font-medium transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_oklch(0.65_0.28_290_/_25%)] cursor-default"
                   >
-                    {item}
+                    <span className="text-base leading-none">{item.icon}</span>
+                    {item.name}
                   </motion.span>
                 ))}
               </div>
