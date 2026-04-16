@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Github, Linkedin, MessageCircle, Mail, MapPin } from "lucide-react";
 import fotoPortfolio from "@/assets/foto-portfolio.jpeg";
 
 function TypingText({ texts }: { texts: string[] }) {
@@ -38,6 +38,12 @@ function TypingText({ texts }: { texts: string[] }) {
   );
 }
 
+const socials = [
+  { icon: Github, href: "https://github.com/viniMirandaCpro", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/vinícius-miranda", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:vinimirandapro220@gmail.com", label: "Email" },
+];
+
 export default function HeroSection() {
   const { t } = useI18n();
 
@@ -65,6 +71,8 @@ export default function HeroSection() {
         style={{ background: "var(--glow)", animation: "float 6s ease-in-out infinite" }} />
       <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full opacity-15 blur-[120px]"
         style={{ background: "var(--glow-secondary)", animation: "float 8s ease-in-out infinite 2s" }} />
+      <div className="absolute top-1/2 left-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10 blur-[80px]"
+        style={{ background: "oklch(0.7 0.25 160)", animation: "float 10s ease-in-out infinite 4s" }} />
 
       <div className="relative z-10 flex flex-col items-center w-full max-w-5xl">
         {/* Photo + text row */}
@@ -74,20 +82,45 @@ export default function HeroSection() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="shrink-0 h-64 w-64 rounded-2xl glow-border p-[3px]"
-            style={{ background: "linear-gradient(135deg, var(--glow), var(--glow-secondary))" }}
+            className="relative shrink-0"
           >
-            <div className="h-full w-full rounded-2xl overflow-hidden">
-              <img
-                src={fotoPortfolio}
-                alt="Vinícius Miranda"
-                className="h-full w-full object-cover object-center"
-              />
+            <div
+              className="h-64 w-64 rounded-2xl glow-border p-[3px]"
+              style={{ background: "linear-gradient(135deg, var(--glow), var(--glow-secondary))" }}
+            >
+              <div className="h-full w-full rounded-2xl overflow-hidden">
+                <img
+                  src={fotoPortfolio}
+                  alt="Vinícius Miranda"
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
             </div>
+            {/* Status badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.4 }}
+              className="absolute -bottom-3 -right-3 flex items-center gap-1.5 rounded-full border border-glass-border bg-background/90 px-3 py-1.5 text-xs font-semibold backdrop-blur-sm"
+            >
+              <span className="h-2 w-2 rounded-full bg-emerald-400" style={{ animation: "pulse-glow 2s ease-in-out infinite" }} />
+              {t.hero.available}
+            </motion.div>
           </motion.div>
 
           {/* Text info */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            {/* Location */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-3 flex items-center gap-1.5 text-xs text-muted-foreground"
+            >
+              <MapPin size={12} />
+              <span>Rio Grande do Norte, Brasil</span>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,6 +147,27 @@ export default function HeroSection() {
             >
               {t.hero.bio}
             </motion.p>
+
+            {/* Social links */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.85 }}
+              className="mt-5 flex items-center gap-3"
+            >
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-glass-border bg-secondary/60 text-muted-foreground transition-all duration-300 hover:border-primary hover:text-foreground hover:shadow-[0_0_15px_oklch(0.65_0.28_290_/_30%)]"
+                >
+                  <s.icon size={16} />
+                </a>
+              ))}
+            </motion.div>
           </div>
         </div>
 
@@ -121,7 +175,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <button onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} className="btn-glow">
@@ -132,10 +186,25 @@ export default function HeroSection() {
           </button>
         </motion.div>
 
+        {/* Quick stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="mt-12 flex flex-wrap items-center justify-center gap-8"
+        >
+          {(t.hero.stats as unknown as { value: string; label: string }[]).map((stat, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <span className="text-2xl font-bold font-display gradient-text">{stat.value}</span>
+              <span className="mt-1 text-xs text-muted-foreground">{stat.label}</span>
+            </div>
+          ))}
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
+          transition={{ delay: 1.7, duration: 1 }}
           className="absolute -bottom-20 left-1/2 -translate-x-1/2"
         >
           <ChevronDown size={28} className="text-muted-foreground animate-bounce" />

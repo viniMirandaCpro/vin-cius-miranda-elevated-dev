@@ -33,8 +33,16 @@ function Index() {
         <ExperienceSection />
         <ContactSection />
       </main>
-      <footer className="py-8 text-center text-sm text-muted-foreground border-t border-glass-border">
-        © {new Date().getFullYear()} Vinícius Miranda. All rights reserved.
+      <footer className="relative py-10 border-t border-glass-border overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: "linear-gradient(var(--glow) 1px, transparent 1px), linear-gradient(90deg, var(--glow) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }} />
+        <div className="relative z-10 flex flex-col items-center gap-4">
+          <span className="gradient-text font-display font-bold text-lg">Vinícius Miranda</span>
+          <p className="text-xs text-muted-foreground">Full Stack Developer · SaaS Builder · Freelancer</p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} · Feito com React + Framer Motion</p>
+        </div>
       </footer>
     </I18nProvider>
   );

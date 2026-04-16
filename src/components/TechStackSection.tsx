@@ -99,7 +99,7 @@ export default function TechStackSection() {
           />
         </motion.h2>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {groups.map((g, gi) => (
             <motion.div
               key={g.label}
@@ -107,22 +107,24 @@ export default function TechStackSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: gi * 0.1, duration: 0.5 }}
-              className="glass-card p-6"
+              className="glass-card glow-border-hover p-6 transition-all duration-300"
             >
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">{g.label}</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-muted-foreground">{g.label}</h3>
+              <div className="flex flex-col gap-3">
                 {g.items.map((item, ii) => (
-                  <motion.span
+                  <motion.div
                     key={item.name}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: gi * 0.1 + ii * 0.05 + 0.2, duration: 0.4 }}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-glass-border bg-secondary px-3 py-1.5 text-sm font-medium transition-all duration-300 hover:border-primary hover:shadow-[0_0_15px_oklch(0.65_0.28_290_/_25%)] cursor-default"
+                    transition={{ delay: gi * 0.1 + ii * 0.07 + 0.2, duration: 0.4 }}
+                    className="group"
                   >
-                    <span className="text-base leading-none">{item.icon}</span>
-                    {item.name}
-                  </motion.span>
+                    <div className="inline-flex items-center gap-1.5 text-sm font-medium">
+                      <span className="text-base leading-none">{item.icon}</span>
+                      {item.name}
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>

@@ -7,32 +7,51 @@ const translations = {
     nav: { about: "Sobre", stack: "Stack", projects: "Projetos", experience: "Experiência", contact: "Contato" },
     hero: {
       roles: ["Full Stack Developer", "SaaS Builder", "Flutter Developer", "Freelancer"],
-      bio: "Desenvolvedor full stack apaixonado por construir produtos reais. Crio SaaS próprios, atuo como freelancer e uso IA no meu fluxo de trabalho.",
+      bio: "Sou desenvolvedor full stack e fundador de SaaS, cursando Informática no IFRN. Construo meus próprios produtos do zero ao lançamento, atuo como freelancer internacional e integro IA ativamente no meu fluxo de desenvolvimento para entregar mais rápido e melhor.",
       cta1: "Ver Projetos",
       cta2: "Entre em contato",
+      available: "Disponível para projetos",
+      stats: [
+        { value: "2+", label: "SaaS lançados" },
+        { value: "3+", label: "Anos de experiência" },
+        { value: "5+", label: "Projetos entregues" },
+        { value: "100%", label: "Remoto & Internacional" },
+      ],
     },
     about: {
       title: "Sobre mim",
-      text: "Vinícius é desenvolvedor full stack e fundador de SaaS, atualmente cursando Informática no IFRN – Instituto Federal do Rio Grande do Norte. Ele constrói seus próprios produtos do zero ao lançamento, trabalha internacionalmente como freelancer e integra IA ativamente em seu fluxo de desenvolvimento para entregar mais rápido e melhor.",
+      text: "Sou desenvolvedor full stack e fundador de SaaS, atualmente cursando Informática no IFRN – Instituto Federal do Rio Grande do Norte. Construo meus próprios produtos do zero ao lançamento, trabalho internacionalmente como freelancer e integro IA ativamente no meu fluxo de desenvolvimento para entregar mais rápido e melhor.",
       stat1: "2 SaaS lançados",
       stat2: "3+ anos desenvolvendo",
       stat3: "Experiência internacional",
+      stat4: "100% Remoto",
+      servicesLabel: "O que eu faço",
+      services: [
+        { title: "Desenvolvimento Web", desc: "Construo aplicações full stack modernas com React, Vue.js e Laravel." },
+        { title: "Apps Mobile", desc: "Desenvolvo aplicativos multiplataforma com Flutter para iOS e Android." },
+        { title: "SaaS & Produtos", desc: "Levo da ideia ao lançamento — arquitetura, infra e produto." },
+        { title: "Integração com IA", desc: "Crio automações e features inteligentes com Gemini e Claude." },
+      ],
     },
     stack: { title: "Tech Stack" },
     projects: {
       title: "Projetos",
       viewProject: "Ver projeto",
       alochegou: {
-        tag: "SaaS Próprio • Live",
+        tag: "SaaS Próprio",
         desc: "Plataforma SaaS para gestão de encomendas em condomínios. OCR com Gemini Vision para leitura automática de etiquetas, notificações via WhatsApp e painel web para síndicos e porteiros.",
       },
       vitool: {
-        tag: "SaaS Próprio • Live",
+        tag: "SaaS Próprio",
         desc: "Ferramenta de gestão financeira pessoal com controle de despesas, parcelamentos e relatórios.",
       },
       equipment: {
         tag: "Freelance • Internacional • Confidencial",
         desc: "Reconstrução completa de plataforma SaaS multi-tenant de gestão de equipamentos. Migração de Yii2 para Laravel moderno com sistema RBAC implementado em backend e frontend.",
+      },
+      owemoney: {
+        tag: "App Mobile • Flutter • Projeto Pessoal",
+        desc: "App Flutter para rastrear quem te deve e quem você deve. Interface familiar ao WhatsApp com tracking bidirecional de dívidas, persistência local via Drift/SQLite e design inspirado no Human Interface Guidelines da Apple.",
       },
     },
     experience: {
@@ -44,7 +63,7 @@ const translations = {
         highlights: [
           "Fundei e publiquei 2 SaaS próprios: AlôChegou e Vitool Finance",
           "Conduzi todo o ciclo de produto — ideação, desenvolvimento, infraestrutura e lançamento",
-          "Uso IA (Claude, Gemini) como parte do meu fluxo de desenvolvimento",
+          "Uso IA (Claude, Gemini) como parte do meu fluxo de desenvolvimento diário",
         ],
       },
       freelance: {
@@ -91,32 +110,51 @@ const translations = {
     nav: { about: "About", stack: "Stack", projects: "Projects", experience: "Experience", contact: "Contact" },
     hero: {
       roles: ["Full Stack Developer", "SaaS Builder", "Flutter Developer", "Freelancer"],
-      bio: "Full stack developer passionate about building real products. I create my own SaaS, work as a freelancer, and use AI in my development workflow.",
+      bio: "I'm a full stack developer and SaaS founder, studying Computer Science at IFRN. I build my own products from idea to launch, work as an international freelancer, and actively integrate AI into my development workflow to ship faster and better.",
       cta1: "View Projects",
       cta2: "Get in touch",
+      available: "Available for projects",
+      stats: [
+        { value: "2+", label: "SaaS launched" },
+        { value: "3+", label: "Years of experience" },
+        { value: "5+", label: "Projects delivered" },
+        { value: "100%", label: "Remote & International" },
+      ],
     },
     about: {
       title: "About me",
-      text: "Vinícius is a full stack developer and SaaS founder currently in the Technical Informatics program at IFRN – Instituto Federal do Rio Grande do Norte. He builds his own products from idea to launch, works internationally as a freelancer, and actively integrates AI into his development workflow to ship faster and better.",
+      text: "I'm a full stack developer and SaaS founder, currently in the Technical Informatics program at IFRN – Instituto Federal do Rio Grande do Norte. I build my own products from idea to launch, work internationally as a freelancer, and actively integrate AI into my development workflow to ship faster and better.",
       stat1: "2 SaaS launched",
       stat2: "3+ years developing",
       stat3: "International experience",
+      stat4: "100% Remote",
+      servicesLabel: "What I do",
+      services: [
+        { title: "Web Development", desc: "I build modern full stack apps with React, Vue.js and Laravel." },
+        { title: "Mobile Apps", desc: "I develop cross-platform apps with Flutter for iOS and Android." },
+        { title: "SaaS & Products", desc: "I take projects from idea to launch — architecture, infra and product." },
+        { title: "AI Integration", desc: "I create smart automations and features with Gemini and Claude." },
+      ],
     },
     stack: { title: "Tech Stack" },
     projects: {
       title: "Projects",
       viewProject: "View project",
       alochegou: {
-        tag: "Own SaaS • Live",
+        tag: "Own SaaS",
         desc: "SaaS platform for package management in condominiums. OCR with Gemini Vision for automatic label reading, WhatsApp notifications, and web dashboard for managers and doormen.",
       },
       vitool: {
-        tag: "Own SaaS • Live",
+        tag: "Own SaaS",
         desc: "Personal finance management tool with expense tracking, installments, and reports.",
       },
       equipment: {
         tag: "Freelance • International • Confidential",
         desc: "Complete rebuild of a multi-tenant equipment management SaaS platform. Migration from Yii2 to modern Laravel with RBAC system implemented in backend and frontend.",
+      },
+      owemoney: {
+        tag: "Mobile App • Flutter • Personal Project",
+        desc: "Flutter app to track who owes you and who you owe. WhatsApp-style interface with bidirectional debt tracking, local persistence via Drift/SQLite, and Apple Human Interface Guidelines-inspired design.",
       },
     },
     experience: {

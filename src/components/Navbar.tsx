@@ -79,8 +79,9 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={toggle}
-              className="glass-card px-3 py-1.5 text-xs font-semibold tracking-wider text-muted-foreground transition-colors hover:text-foreground"
+              className="glass-card px-3 py-1.5 text-xs font-semibold tracking-wider text-muted-foreground transition-colors hover:text-foreground flex items-center gap-1.5"
             >
+              <span className="text-base leading-none">{lang === "pt" ? "🇺🇸" : "🇧🇷"}</span>
               {lang === "pt" ? "EN" : "PT"}
             </button>
             <button className="md:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>

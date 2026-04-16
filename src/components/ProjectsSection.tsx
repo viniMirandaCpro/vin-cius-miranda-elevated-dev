@@ -5,11 +5,14 @@ import { useI18n } from "@/lib/i18n";
 import { ExternalLink, ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 import alochegouLogo from "@/assets/alo-chegou.png";
 import vitoolLogo from "@/assets/vitool.png";
+import owemoneyLogo from "@/assets/owemoney_logo.png";
 import alochegou1 from "@/assets/alochegou-1.png";
 import alochegou2 from "@/assets/alochegou-2.png";
 import alochegou3 from "@/assets/alochegou-3.png";
 import alochegou4 from "@/assets/alochegou-4.png";
 import dashboardImg from "@/assets/dashboard-mockup.png";
+import owemoneyHome from "@/assets/owemoney-home.png";
+import owemoneyDetails from "@/assets/owemoney-details.png";
 
 function ImageModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   return createPortal(
@@ -143,15 +146,27 @@ export default function ProjectsSection() {
       name: "AlôChegou",
       url: "https://alochegou.com.br",
       tag: t.projects.alochegou.tag,
+      live: true,
       desc: t.projects.alochegou.desc,
       stack: ["React", "Supabase", "PostgreSQL", "WhatsApp API", "Gemini Vision", "Docker"],
       logo: alochegouLogo,
       screenshots: [alochegou1, alochegou2, alochegou3, alochegou4],
     },
     {
+      name: "OweMoney",
+      url: "https://github.com/viniMirandaCpro/OweMoney",
+      tag: t.projects.owemoney.tag,
+      live: false,
+      desc: t.projects.owemoney.desc,
+      stack: ["Flutter", "Dart", "Drift", "SQLite", "Material 3"],
+      logo: owemoneyLogo,
+      screenshots: [owemoneyHome, owemoneyDetails],
+    },
+    {
       name: "Vitool Finance",
       url: "https://demo.vitoolfinance.com.br",
       tag: t.projects.vitool.tag,
+      live: true,
       desc: t.projects.vitool.desc,
       stack: ["React", "Supabase"],
       logo: vitoolLogo,
@@ -161,6 +176,7 @@ export default function ProjectsSection() {
       name: "Equipment Management SaaS",
       url: null,
       tag: t.projects.equipment.tag,
+      live: false,
       desc: t.projects.equipment.desc,
       stack: ["Laravel", "Vue.js", "Inertia.js", "MySQL", "Docker"],
       logo: null,
@@ -206,7 +222,18 @@ export default function ProjectsSection() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold font-display">{p.name}</h3>
-                      <span className="text-xs font-medium text-muted-foreground">{p.tag}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-muted-foreground">{p.tag}</span>
+                        {p.live && (
+                          <span className="flex items-center gap-1 text-xs font-semibold text-emerald-400">
+                            <span className="relative flex h-2 w-2">
+                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                            </span>
+                            Live
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">{p.desc}</p>

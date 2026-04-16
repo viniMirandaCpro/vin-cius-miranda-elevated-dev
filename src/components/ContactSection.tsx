@@ -1,23 +1,35 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle, Send } from "lucide-react";
 
 export default function ContactSection() {
   const { t } = useI18n();
 
   const links = [
-    { icon: Github, href: "https://github.com/viniMirandaCpro", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/vinicius-mirandaa", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:email@example.com", label: "Email" },
+    { icon: Github, href: "https://github.com/viniMirandaCpro", label: "GitHub", color: "#ffffff" },
+    { icon: Linkedin, href: "https://linkedin.com/in/vinicius-mirandaa", label: "LinkedIn", color: "#0A66C2" },
+    { icon: Mail, href: "mailto:vinimirandapro220@gmail.com", label: "Email", color: "#EA4335" },
   ];
 
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full opacity-15 blur-[150px]"
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full opacity-10 blur-[160px]"
         style={{ background: "var(--glow)" }} />
+      <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full opacity-10 blur-[100px]"
+        style={{ background: "var(--glow-secondary)" }} />
 
       <div className="relative z-10 mx-auto max-w-2xl text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-4 inline-flex items-center gap-2 rounded-full border border-glass-border bg-secondary/60 px-4 py-1.5 text-xs font-semibold text-muted-foreground"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" style={{ animation: "pulse-glow 2s ease-in-out infinite" }} />
+          Disponível agora
+        </motion.div>
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,17 +43,18 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mt-4 text-muted-foreground"
+          className="mt-4 text-muted-foreground leading-relaxed"
         >
           {t.contact.subtitle}
         </motion.p>
 
+        {/* Social links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-8 flex justify-center gap-4"
+          className="mt-8 flex justify-center gap-3"
         >
           {links.map((l) => (
             <a
@@ -49,9 +62,11 @@ export default function ContactSection() {
               href={l.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-card glow-border-hover flex h-14 w-14 items-center justify-center rounded-xl transition-all duration-300 hover:scale-110"
+              title={l.label}
+              className="group glass-card glow-border-hover flex flex-col items-center gap-1.5 rounded-xl p-4 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
             >
-              <l.icon size={22} className="text-muted-foreground" />
+              <l.icon size={22} style={{ color: l.color }} className="transition-transform duration-300 group-hover:scale-110" />
+              <span className="text-[10px] text-muted-foreground">{l.label}</span>
             </a>
           ))}
         </motion.div>
@@ -69,25 +84,29 @@ export default function ContactSection() {
               <label className="mb-1.5 block text-sm font-medium text-muted-foreground">{t.contact.name}</label>
               <input
                 type="text"
-                className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground outline-none transition-all focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
+                placeholder="Seu nome"
+                className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
               />
             </div>
             <div>
               <label className="mb-1.5 block text-sm font-medium text-muted-foreground">{t.contact.email}</label>
               <input
                 type="email"
-                className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground outline-none transition-all focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
+                placeholder="seu@email.com"
+                className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
               />
             </div>
           </div>
           <div className="mt-4">
             <label className="mb-1.5 block text-sm font-medium text-muted-foreground">{t.contact.message}</label>
             <textarea
-              rows={4}
-              className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground outline-none transition-all resize-none focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
+              rows={5}
+              placeholder="Fale sobre seu projeto ou oportunidade..."
+              className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 outline-none transition-all resize-none focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
             />
           </div>
-          <button type="submit" className="btn-glow mt-6 w-full text-center">
+          <button type="submit" className="btn-glow mt-6 w-full flex items-center justify-center gap-2 text-center">
+            <Send size={16} />
             {t.contact.send}
           </button>
         </motion.form>
