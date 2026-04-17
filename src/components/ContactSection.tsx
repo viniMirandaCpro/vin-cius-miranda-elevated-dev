@@ -1,15 +1,47 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
-import { Github, Linkedin, Mail, MessageCircle, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Send, Loader2 } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "sonner";
+import { sendContact } from "@/server/sendContact";
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
+  email: z.string().email("Email inválido"),
+  message: z.string().min(10, "Mensagem deve ter pelo menos 10 caracteres"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactSection() {
   const { t } = useI18n();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
 
   const links = [
     { icon: Github, href: "https://github.com/viniMirandaCpro", label: "GitHub", color: "#ffffff" },
     { icon: Linkedin, href: "https://linkedin.com/in/vinicius-mirandaa", label: "LinkedIn", color: "#0A66C2" },
     { icon: Mail, href: "mailto:vinimirandapro220@gmail.com", label: "Email", color: "#EA4335" },
   ];
+
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      await sendContact({ data });
+      toast.success("Mensagem enviada com sucesso! Entrarei em contato em breve.");
+      reset();
+    } catch {
+      toast.error("Erro ao enviar mensagem. Tente novamente ou entre em contato pelo email.");
+    }
+  };
 
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
@@ -77,7 +109,7 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
           className="mt-10 glass-card p-6 text-left md:p-8"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <div className="grid gap-4 md:grid-cols-2">
             <div>
@@ -85,16 +117,24 @@ export default function ContactSection() {
               <input
                 type="text"
                 placeholder="Seu nome"
+                {...register("name")}
                 className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
               />
+              {errors.name && (
+                <p className="mt-1 text-xs text-red-400">{errors.name.message}</p>
+              )}
             </div>
             <div>
               <label className="mb-1.5 block text-sm font-medium text-muted-foreground">{t.contact.email}</label>
               <input
                 type="email"
                 placeholder="seu@email.com"
+                {...register("email")}
                 className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
               />
+              {errors.email && (
+                <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
+              )}
             </div>
           </div>
           <div className="mt-4">
@@ -102,12 +142,29 @@ export default function ContactSection() {
             <textarea
               rows={5}
               placeholder="Fale sobre seu projeto ou oportunidade..."
+              {...register("message")}
               className="w-full rounded-lg border border-glass-border bg-secondary/50 px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 outline-none transition-all resize-none focus:border-primary focus:shadow-[0_0_15px_oklch(0.65_0.28_290_/_20%)]"
             />
+            {errors.message && (
+              <p className="mt-1 text-xs text-red-400">{errors.message.message}</p>
+            )}
           </div>
-          <button type="submit" className="btn-glow mt-6 w-full flex items-center justify-center gap-2 text-center">
-            <Send size={16} />
-            {t.contact.send}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="btn-glow mt-6 w-full flex items-center justify-center gap-2 text-center disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 size={16} className="animate-spin" />
+                Enviando...
+              </>
+            ) : (
+              <>
+                <Send size={16} />
+                {t.contact.send}
+              </>
+            )}
           </button>
         </motion.form>
       </div>

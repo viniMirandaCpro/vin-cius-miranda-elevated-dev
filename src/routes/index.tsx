@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { I18nProvider } from "@/lib/i18n";
+import { Toaster } from "@/components/ui/sonner";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -44,6 +45,7 @@ function Index() {
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} · Feito com React + Framer Motion</p>
         </div>
       </footer>
+      <Toaster richColors position="top-right" />
     </I18nProvider>
   );
 }
