@@ -85,14 +85,14 @@ export default function TechStackSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-3xl font-bold font-display md:text-4xl"
         >
           <span className="gradient-text">{t.stack.title}</span>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.3, duration: 0.6 }}
             className="mt-2 h-1 w-20 origin-left rounded-full"
             style={{ background: "linear-gradient(90deg, var(--glow), var(--glow-secondary))" }}
@@ -105,7 +105,7 @@ export default function TechStackSection() {
               key={g.label}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: gi * 0.1, duration: 0.5 }}
               className="glass-card glow-border-hover p-6 transition-all duration-300"
             >
@@ -116,7 +116,7 @@ export default function TechStackSection() {
                     key={item.name}
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{ delay: gi * 0.1 + ii * 0.07 + 0.2, duration: 0.4 }}
                     className="group"
                   >

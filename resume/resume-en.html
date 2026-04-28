@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinícius Miranda — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #2563EB;
+      --text: #111827;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      padding: 48px 0;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── Header ── */
+    header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+
+    header .title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-top: 3px;
+      margin-bottom: 12px;
+    }
+
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .contacts a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .contacts span::before {
+      content: attr(data-icon);
+      margin-right: 4px;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 24px;
+    }
+
+    section h2 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Summary ── */
+    .summary p {
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    /* ── Experience ── */
+    .exp-item {
+      margin-bottom: 16px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      font-size: 13.5px;
+    }
+
+    .exp-period {
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .exp-item ul {
+      padding-left: 16px;
+      color: var(--text);
+    }
+
+    .exp-item ul li {
+      margin-bottom: 3px;
+    }
+
+    .exp-stack {
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    .exp-stack strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .proj-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+    }
+
+    .proj-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .proj-name {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .proj-badge {
+      font-size: 10px;
+      background: #EFF6FF;
+      color: var(--accent);
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .proj-url {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .proj-url a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .proj-desc {
+      font-size: 12px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .proj-stack {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .skill-group h3 {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 5px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag {
+      background: #F3F4F6;
+      color: var(--text);
+      font-size: 11.5px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    /* ── Education ── */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .edu-degree {
+      font-weight: 600;
+    }
+
+    .edu-inst {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .edu-status {
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { padding: 0; }
+      .page { padding: 20px 30px; }
+      .proj-card { border-color: #ccc; }
+      a { color: inherit !important; }
+      section { page-break-inside: avoid; }
+      @page { size: A4; margin: 10mm 12mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header>
+      <h1>Vinícius Miranda</h1>
+      <div class="title">Full Stack &amp; Flutter Developer · SaaS Builder</div>
+      <div class="contacts">
+        <span data-icon="📍">Rio Grande do Norte, Brazil</span>
+        <a href="mailto:vinimirandapro220@gmail.com"><span data-icon="✉">vinimirandapro220@gmail.com</span></a>
+        <a href="https://github.com/viniMirandaCpro" target="_blank"><span data-icon="⌥">github.com/viniMirandaCpro</span></a>
+        <a href="https://vinimiranda.dev" target="_blank"><span data-icon="🌐">vinimiranda.dev</span></a>
+        <a href="https://linkedin.com/in/vinicius-mirandaa" target="_blank"><span data-icon="in">linkedin.com/in/vinicius-mirandaa</span></a>
+      </div>
+    </header>
+
+    <section class="summary">
+      <h2>About</h2>
+      <p>
+        I'm a Full Stack Developer and SaaS founder, currently studying Computer Science at IFRN (Brazil). I build products from zero to launch — ideation, development, infrastructure, and deployment. I work as an international remote freelancer and actively integrate AI into my workflow to ship faster and better. I have a strong background in Flutter for cross-platform mobile, React and Laravel for web, and multi-tenant SaaS architecture.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">SaaS Founder &amp; Full Stack Developer</span>
+          <span class="exp-period">2023 – Present</span>
+        </div>
+        <div class="exp-company">Self-Employed · Remote</div>
+        <ul>
+          <li>Founded and launched two SaaS products: <strong>AlôChegou</strong> and <strong>Vitool Finance</strong></li>
+          <li>Owned the full product lifecycle: ideation, development, infrastructure, and launch</li>
+          <li>Integrated AI tools (Claude, Gemini) for intelligent features and automation in development workflow</li>
+        </ul>
+        <div class="exp-stack"><strong>Stack:</strong> Flutter, React, Supabase, PostgreSQL, Gemini Vision, Docker</div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">International Full Stack Freelancer</span>
+          <span class="exp-period">Mar 2025 – Oct 2025</span>
+        </div>
+        <div class="exp-company">Freelance · Remote</div>
+        <ul>
+          <li>Rebuilt a multi-tenant equipment management SaaS from scratch (migrated from Yii2 to Laravel + Vue.js)</li>
+          <li>Architected multi-tenant system with complete data isolation between tenants</li>
+          <li>Implemented end-to-end RBAC: backend (Laravel policies/gates) and frontend (Vue.js route guards)</li>
+          <li>Delivered a fluid SPA with Vue.js + Inertia.js; performed full MySQL/PostgreSQL database migration</li>
+          <li>Containerized the entire application with Docker for environment consistency</li>
+        </ul>
+        <div class="exp-stack"><strong>Stack:</strong> Laravel, Vue.js, Inertia.js, MySQL, PostgreSQL, Docker</div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Self-Directed Learning &amp; Side Projects</span>
+          <span class="exp-period">2021 – Present</span>
+        </div>
+        <div class="exp-company">Self-Taught</div>
+        <ul>
+          <li>Learned Flutter and Dart for cross-platform mobile development (iOS &amp; Android)</li>
+          <li>Studied Python for automations, scripts, and data exploration</li>
+          <li>Built and shipped personal mobile projects with real-world usage</li>
+        </ul>
+        <div class="exp-stack"><strong>Stack:</strong> Flutter, Dart, Python</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Featured Projects</h2>
+      <div class="projects-grid">
+
+        <div class="proj-card">
+          <div class="proj-card-header">
+            <span class="proj-name">AlôChegou</span>
+            <span class="proj-badge">SaaS · Live</span>
+          </div>
+          <div class="proj-url"><a href="https://alochegou.com.br">alochegou.com.br</a></div>
+          <div class="proj-desc">SaaS platform for package management in condominiums. OCR via Gemini Vision for automatic label reading, WhatsApp notifications, and a web dashboard for managers and doormen.</div>
+          <div class="proj-stack">React · Supabase · PostgreSQL · WhatsApp API · Gemini Vision · Docker</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-header">
+            <span class="proj-name">OweMoney</span>
+            <span class="proj-badge">Flutter · Mobile</span>
+          </div>
+          <div class="proj-url"><a href="https://github.com/viniMirandaCpro/OweMoney">github.com/viniMirandaCpro/OweMoney</a></div>
+          <div class="proj-desc">Flutter app to track bilateral debts. WhatsApp-style interface, bidirectional tracking (who owes you and who you owe), local persistence via Drift/SQLite, Apple HIG-inspired design.</div>
+          <div class="proj-stack">Flutter · Dart · Drift · SQLite · Material 3</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-header">
+            <span class="proj-name">Vitool Finance</span>
+            <span class="proj-badge">SaaS · Live</span>
+          </div>
+          <div class="proj-url"><a href="https://demo.vitoolfinance.com.br">demo.vitoolfinance.com.br</a></div>
+          <div class="proj-desc">Personal finance management tool with expense tracking, installments, and detailed reports.</div>
+          <div class="proj-stack">React · Supabase · PostgreSQL</div>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-card-header">
+            <span class="proj-name">Equipment Management SaaS</span>
+            <span class="proj-badge">Freelance</span>
+          </div>
+          <div class="proj-url" style="color: var(--muted);">Confidential · International Client</div>
+          <div class="proj-desc">Full rebuild of a multi-tenant equipment management platform from a legacy codebase. End-to-end RBAC implementation across backend and frontend layers.</div>
+          <div class="proj-stack">Laravel · Vue.js · Inertia.js · Docker · PostgreSQL</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Mobile</h3>
+          <div class="tags">
+            <span class="tag">Flutter</span>
+            <span class="tag">Dart</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Frontend</h3>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Vue.js</span>
+            <span class="tag">Inertia.js</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Backend</h3>
+          <div class="tags">
+            <span class="tag">Laravel</span>
+            <span class="tag">PHP</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Database</h3>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">SQLite</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Infra &amp; Tools</h3>
+          <div class="tags">
+            <span class="tag">Docker</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>AI &amp; Automation</h3>
+          <div class="tags">
+            <span class="tag">Claude API</span>
+            <span class="tag">Gemini</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">Technical Degree in Computer Science</div>
+          <div class="edu-inst">IFRN — Federal Institute of Rio Grande do Norte, Brazil</div>
+        </div>
+        <div class="edu-status">In progress</div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

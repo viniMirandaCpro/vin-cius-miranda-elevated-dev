@@ -190,7 +190,7 @@ export default function ProjectsSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-3xl font-bold font-display md:text-4xl"
         >
           <span className="gradient-text">{t.projects.title}</span>
@@ -202,8 +202,8 @@ export default function ProjectsSection() {
               key={p.name}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.1, duration: 0.4 }}
               whileHover={{ y: -4 }}
               className="glass-card glow-border-hover overflow-hidden transition-all duration-300"
             >

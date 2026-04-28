@@ -48,7 +48,7 @@ export default function HeroSection() {
   const { t } = useI18n();
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20">
       {/* Aurora background */}
       <div
         className="absolute inset-0 opacity-30"
@@ -76,16 +76,16 @@ export default function HeroSection() {
 
       <div className="relative z-10 flex flex-col items-center w-full max-w-5xl">
         {/* Photo + text row */}
-        <div className="flex flex-col md:flex-row items-center md:items-center gap-10 w-full">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 w-full">
           {/* Profile photo */}
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative shrink-0"
+            className="relative shrink-0 pb-4 sm:pb-0"
           >
             <div
-              className="h-64 w-64 rounded-2xl glow-border p-[3px]"
+              className="h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 rounded-2xl glow-border p-[3px]"
               style={{ background: "linear-gradient(135deg, var(--glow), var(--glow-secondary))" }}
             >
               <div className="h-full w-full rounded-2xl overflow-hidden">

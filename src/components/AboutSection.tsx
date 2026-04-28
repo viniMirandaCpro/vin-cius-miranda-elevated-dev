@@ -4,7 +4,7 @@ import { Rocket, Code2, Globe, Wifi, Globe2, Smartphone, Sparkles } from "lucide
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.15, duration: 0.6 } }),
+  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.4 } }),
 };
 
 const serviceIcons = [Globe2, Smartphone, Rocket, Sparkles];
@@ -27,14 +27,14 @@ export default function AboutSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-3xl font-bold font-display md:text-4xl"
         >
           <span className="gradient-text">{t.about.title}</span>
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.3, duration: 0.6 }}
             className="mt-2 h-1 w-20 origin-left rounded-full"
             style={{ background: "linear-gradient(90deg, var(--glow), var(--glow-secondary))" }}
@@ -45,8 +45,8 @@ export default function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.4 }}
           >
             <p className="text-muted-foreground leading-relaxed text-lg">{t.about.text}</p>
 
@@ -58,7 +58,7 @@ export default function AboutSection() {
                   custom={i}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-50px" }}
                   variants={fadeUp}
                   className="glass-card glow-border-hover flex items-center gap-3 p-4 transition-all duration-300"
                 >
@@ -76,7 +76,7 @@ export default function AboutSection() {
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               className="text-xs font-semibold uppercase tracking-wider text-muted-foreground"
             >
               {t.about.servicesLabel}
@@ -89,7 +89,7 @@ export default function AboutSection() {
                   custom={i}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-50px" }}
                   variants={fadeUp}
                   className="glass-card glow-border-hover group flex items-start gap-4 p-5 transition-all duration-300"
                 >

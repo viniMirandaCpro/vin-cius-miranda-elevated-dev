@@ -55,7 +55,7 @@ export default function ContactSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="mb-4 inline-flex items-center gap-2 rounded-full border border-glass-border bg-secondary/60 px-4 py-1.5 text-xs font-semibold text-muted-foreground"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" style={{ animation: "pulse-glow 2s ease-in-out infinite" }} />
@@ -65,7 +65,7 @@ export default function ContactSection() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-3xl font-bold font-display md:text-4xl"
         >
           <span className="gradient-text">{t.contact.title}</span>
@@ -73,7 +73,7 @@ export default function ContactSection() {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.1 }}
           className="mt-4 text-muted-foreground leading-relaxed"
         >
@@ -84,7 +84,7 @@ export default function ContactSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.2 }}
           className="mt-8 flex justify-center gap-3"
         >
@@ -106,7 +106,7 @@ export default function ContactSection() {
         <motion.form
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ delay: 0.3 }}
           className="mt-10 glass-card p-6 text-left md:p-8"
           onSubmit={handleSubmit(onSubmit)}
