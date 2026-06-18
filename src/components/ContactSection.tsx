@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { sendContact } from "@/server/sendContact";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
@@ -35,7 +34,18 @@ export default function ContactSection() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      await sendContact({ data });
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        }),
+      });
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message);
       toast.success("Mensagem enviada com sucesso! Entrarei em contato em breve.");
       reset();
     } catch {
